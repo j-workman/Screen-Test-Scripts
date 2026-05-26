@@ -1,0 +1,12 @@
+# Ignore legacy archive files and folders
+Archive/
+
+# Bytecode and environment files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment directories
+venv/
+ENV/
+.env/
