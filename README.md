@@ -198,7 +198,11 @@ The new executables will again appear in each application's `dist/` directory.
 
 ## License
 
-[Add license information as needed]
+This project is released under the GNU General Public License v3.0 (GPL-3.0).
+
+You are free to use, modify, and redistribute this software under the same license terms.
+
+For full license text, see the [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 ## Notes
 
