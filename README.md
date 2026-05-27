@@ -61,7 +61,7 @@ A full-screen color display utility for visual inspection of standardized colors
 
 #### Features
 - **Full-Screen Display**: Shows pure colors in full-screen mode on selected monitor
-- **Multi-Monitor Support**: Switch between multiple monitors
+- **Multi-Monitor Support**: Switch between multiple monitors; press `A` to toggle an "all monitors" mode that displays the current color on every connected monitor
 - **CIE XYZ Calculation**: Displays CIE XYZ coordinates for each color
 - **Predefined Colors**: Displays 9 standard test colors (red, green, blue, cyan, magenta, yellow, white, gray, black)
 
@@ -74,8 +74,8 @@ A full-screen color display utility for visual inspection of standardized colors
 
 2. **Navigation Controls**
    - **Space or Click**: Display the next color
-   - **Left Arrow**: Switch to previous monitor
-   - **Right Arrow**: Switch to next monitor
+   - **Left/Right Arrow**: Switch to previous/next monitor (disabled when in all-monitor mode)
+   - **A**: Toggle all monitors mode (show the same color on every connected monitor)
    - **Escape**: Exit the application
 
 3. **Configuration**
@@ -135,23 +135,23 @@ A full-screen color display utility for visual inspection of standardized colors
 
 ```
 Screen Test Scripts/
-├── archive/                    # Legacy/previous versions
+├── archive/                        # Legacy/previous versions
 ├── color_viewer/
-│   ├── color_viewer.py         # Full-screen color display utility
-│   ├── color_viewer.spec       # PyInstaller spec file
-│   ├── color_viewer_icon.png   # Application icon
+│   ├── color_viewer.py             # Full-screen color display utility
+│   ├── color_viewer.spec           # PyInstaller spec file
+│   ├── color_viewer_icon.png       # Application icon
 │   ├── dist/
-│   │   └── color_viewer.exe    # Built executable
-│   └── build/                  # PyInstaller temporary build files
+│   │   └── color_viewer.exe        # Built executable
+│   └── build/                      # PyInstaller temporary build files
 ├── screen_analysis/
-│   ├── screen_analysis.py      # Main color analysis application
-│   ├── screen_analysis.spec    # PyInstaller spec file
-│   ├── screen_analysis_icon.png# Application icon
+│   ├── screen_analysis.py          # Main color analysis application
+│   ├── screen_analysis.spec        # PyInstaller spec file
+│   ├── screen_analysis_icon.png    # Application icon
 │   ├── dist/
-│   │   └── screen_analysis.exe # Built executable
-│   └── build/                  # PyInstaller temporary build files
-├── examples/                   # Example output image placeholders
-└── README.md                   # This file
+│   │   └── screen_analysis.exe     # Built executable
+│   └── build/                      # PyInstaller temporary build files
+├── examples/                       # Example output image placeholders
+└── README.md                       # This file
 ```
 
 ---
