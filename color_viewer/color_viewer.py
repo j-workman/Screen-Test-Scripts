@@ -164,17 +164,26 @@ class FullScreenColorViewer:
         self.match_window_to_monitor()
         self.update_screen()
 
-    def calculate_xyz(self, hex_color):
-        """Converts a hex string into normalized sRGB, then computes CIE XYZ values."""
+    def calculate_XYZ(self, hex_color):
+        """Converts a hex string into normalized sRGB, then computes CIE XYZ and xy values."""
         clean_hex = hex_color.lstrip('#')
         rgb_255 = tuple(int(clean_hex[i:i+2], 16) for i in (0, 2, 4))
         rgb_normalized = np.array(rgb_255) / 255.0
-        return colour.sRGB_to_XYZ(rgb_normalized)
+        XYZ = colour.sRGB_to_XYZ(rgb_normalized)
+        X, Y, Z = XYZ
+        total = X + Y + Z
+        if total == 0:
+            x = y = 0.0
+        else:
+            x = X / total
+            y = Y / total
+        return X, Y, Z, x, y
+    
 
     def update_screen(self):
         """Calculates color metrics, updates background color, and formats overlay text."""
         current_hex = self.colors[self.current_color_index]
-        X, Y, Z = self.calculate_xyz(current_hex)
+        X, Y, Z, x, y = self.calculate_XYZ(current_hex)
         # Build per-window overlays so each shows its monitor index when relevant
         base_overlay = (
             f"HEX CODE: {current_hex}\n"
@@ -182,7 +191,10 @@ class FullScreenColorViewer:
             f"CIE XYZ Coordinates:\n"
             f"  X = {X:.5f}\n"
             f"  Y = {Y:.5f}\n"
-            f"  Z = {Z:.5f}\n\n"
+            f"  Z = {Z:.5f}\n"
+            f"CIE xy Chromaticity:\n"
+            f"  x = {x:.5f}\n"
+            f"  y = {y:.5f}\n\n"
         )
 
         text_color = "#000000" if Y > 0.5 else "#FFFFFF"
